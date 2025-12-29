@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base::parent(~{:: #content},~{:: title}) }"
+>
+  <head>
+    <title>Home</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="content">
+      <h2 class="text-center text-3xl m-4">Welcome to the Home Page</h2>
+      <p class="text-center text-lg m-4">
+        This is the home page of the Email Service application.
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base::parent(~{:: #content},~{:: title}) }"
+>
+  <head>
+    <title>Send Email</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="content">
+      <h2 class="text-center text-3xl m-4">Send Email</h2>
+
+      <form
+        class="max-w-sm mx-auto space-y-4"
+        th:action="@{/email/send}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label
+          for="subject"
+          class="block mb-1 text-sm font-medium text-heading"
+          >Subject</label
+        >
+        <input
+          type="text"
+          name="subject"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+          required
+        />
+
+        <label
+          for="message"
+          class="block mb-1 text-sm font-medium text-heading"
+          >Your message</label
+        >
+        <textarea
+          id="message"
+          rows="4"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
+          name="message"
+          placeholder="Your message"
+        ></textarea>
+
+        <label
+          class="block mb-2.5 text-sm font-medium text-heading"
+          for="file_input"
+          >Upload file</label
+        >
+        <input
+          class="cursor-pointer bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full shadow-xs placeholder:text-body"
+          name="file"
+          type="file"
+        />
+
+        <button
+          type="submit"
+          class="cursor-pointer text-white bg-blue-600 box-border border border-transparent hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        >
+          Send
+        </button>
+      </form>
+
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    </div>
+  </body>
+</html>

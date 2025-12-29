@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html
+  class="light"
+  lang="en"
+  th:fragment="parent(content,title)"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title data-th-replace="${title}">Email Service</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      data-th-href="@{'/css/output.css'}"
+    />
+  </head>
+  <body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
+    <div data-th-replace="~{navbar :: navbar}"></div>
+
+    <div>
+      <section data-th-replace="${content}"></section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>
