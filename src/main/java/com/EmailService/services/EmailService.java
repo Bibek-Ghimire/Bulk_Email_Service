@@ -17,7 +17,6 @@ import jakarta.mail.internet.MimeMessage;
 
 
 @Service
-
 public class EmailService {
 
     private JavaMailSender mailSender;
@@ -39,7 +38,6 @@ public class EmailService {
 
         for (Users user : users) {
 
-
             String otp = String.valueOf((int)Math.floor(Math.random() * 900000) + 100000);
 
             MimeMessage message = mailSender.createMimeMessage();
@@ -50,9 +48,8 @@ public class EmailService {
             helper.setSubject(subject);
 
             String htmlContent =
-                    "<h3>Hello " + user.getName() + "</h3>" +
-                    "<p>" + messageText+ "</p>" +
-                    "<p>Your OTP is: " + otp + "</p>";
+                    "<h3>Hello " + user.getName() + ". This is your OTP for verification.</h3>" +
+                    "<p>Your OTP is: " + otp +". Do not share this OTP with anyone.</p>";
 
             helper.setText(htmlContent, true);
 
