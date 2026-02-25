@@ -12,6 +12,9 @@ services:
     ports:
       - "3306:3306"
 
+    volumes:
+      - email-data:/var/lib/mysql
+
     restart: always
     healthcheck:
       test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-proot"]
@@ -52,3 +55,6 @@ services:
 
 networks:
   emailNW:
+
+volumes:
+  email-data:
