@@ -1,0 +1,54 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    networks:
+      - emailNW
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: emaildb
+
+    ports:
+      - "3306:3306"
+
+    restart: always
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+
+  email-app:
+    image: emailservice:latest
+    container_name: email-app
+    networks:
+      - emailNW
+
+    environment:
+      SPRING.DATASOURCE.URL: jdbc:mysql://mysql:3306/emaildb
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: root
+      SPRING.MAIL.HOST: smtp.gmail.com
+      SPRING.MAIL.PORT: 587
+      SPRING.MAIL.USERNAME: bibekgg634@gmail.com
+      SPRING.MAIL.PASSWORD: qzkb ihiq bnii ethf
+
+    ports:
+      - "8085:8085"
+
+    restart: always
+
+    depends_on:
+      - mysql
+
+    healthcheck:
+      test: ["CMD","curl","-f","http://localhost:8085/users/register"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+networks:
+  emailNW:
